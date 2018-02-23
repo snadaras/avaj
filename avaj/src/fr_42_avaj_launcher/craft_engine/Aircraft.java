@@ -1,8 +1,10 @@
 package fr_42_avaj_launcher.craft_engine;
 
-/**
- * Created by snadaras on 20/02/2018.
+/****************************************
+ * Created by snadaras                  *
+ * snadaras@student.42.fr on 20/02/2018 *
  */
+
 
 public abstract class Aircraft {
     protected long id;

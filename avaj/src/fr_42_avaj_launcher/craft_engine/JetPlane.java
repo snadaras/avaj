@@ -1,12 +1,14 @@
 package fr_42_avaj_launcher.craft_engine;
 
 import fr_42_avaj_launcher.exception.UnknownWeatherException;
-import fr_42_avaj_launcher.tower.WeatherTower;
-import fr_42_avaj_launcher.launch.Logger;
+import fr_42_avaj_launcher.simulator.WeatherTower;
+import fr_42_avaj_launcher.inout.Logger;
 
-/**
- * Created by snadaras on 20/02/2018.
+/****************************************
+ * Created by snadaras                  *
+ * snadaras@student.42.fr on 20/02/2018 *
  */
+
 public class JetPlane extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
 

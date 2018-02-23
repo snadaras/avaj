@@ -4,13 +4,12 @@ import fr_42_avaj_launcher.exception.AvajLauncherException;
 import fr_42_avaj_launcher.exception.ScenarioFileException;
 import fr_42_avaj_launcher.craft_engine.AircraftFactory;
 import fr_42_avaj_launcher.craft_engine.Flyable;
-import fr_42_avaj_launcher.tower.WeatherTower;
-import fr_42_avaj_launcher.weather.WeatherProvider;
-import fr_42_avaj_launcher.launch.Logger;
+import fr_42_avaj_launcher.inout.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by snadaras on 20/02/2018.
@@ -19,8 +18,12 @@ import java.util.List;
 public class Simulator {
     private static WeatherTower weatherTower;
     private static List<Flyable> flyables = new ArrayList<Flyable>();
-
+    private static Random randomGenerator = new Random();
     public static void main(String[] args) {
+
+        for (int i = 0; i < 50; i++) {
+            System.out.println("count " + randomGenerator.nextInt(4));
+        }
         if (args.length != 1) {
             System.out.println("Usage: java fr_42_avaj_launcher.simulator.Simulator scenario.txt");
             System.exit(0);

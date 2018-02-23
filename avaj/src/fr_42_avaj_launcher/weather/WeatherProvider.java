@@ -32,5 +32,6 @@ public class WeatherProvider {
         x1 = randomGenerator.nextInt(1000);
         x2 = randomGenerator.nextInt(1000);
         x3 = randomGenerator.nextInt(1000);
+
     }
 }

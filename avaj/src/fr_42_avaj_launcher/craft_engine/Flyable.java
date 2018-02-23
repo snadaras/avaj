@@ -1,15 +1,16 @@
 package fr_42_avaj_launcher.craft_engine;
 
 import fr_42_avaj_launcher.exception.UnknownWeatherException;
-import fr_42_avaj_launcher.tower.WeatherTower;
+import fr_42_avaj_launcher.simulator.WeatherTower;
 
-/**
- * Created by snadaras on 20/02/2018.
+/****************************************
+ * Created by snadaras                  *
+ * snadaras@student.42.fr on 20/02/2018 *
  */
 
 public interface Flyable {
 
-    void updateConditions() throws UnknownWeatherException;
+    public void updateConditions() throws UnknownWeatherException;
 
-    void registerTower(WeatherTower weatherTower);
+    public void registerTower(WeatherTower weatherTower);
 }

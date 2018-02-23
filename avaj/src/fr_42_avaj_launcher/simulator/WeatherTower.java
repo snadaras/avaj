@@ -1,4 +1,4 @@
-package fr_42_avaj_launcher.tower;
+package fr_42_avaj_launcher.simulator;
 
 import fr_42_avaj_launcher.exception.UnknownWeatherException;
 import fr_42_avaj_launcher.craft_engine.Coordinates;
@@ -13,7 +13,7 @@ public class WeatherTower extends Tower {
         return WeatherProvider.getProvider().getCurrentWeather(coordinates);
     }
 
-    public void changeWeather() throws UnknownWeatherException {
+     void changeWeather() throws UnknownWeatherException {
         WeatherProvider.getProvider().changeWeather();
         super.conditionsChanged();
     }

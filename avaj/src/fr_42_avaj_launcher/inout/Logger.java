@@ -1,13 +1,15 @@
-package fr_42_avaj_launcher.launch;
+package fr_42_avaj_launcher.inout;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- * Created by snadaras on 20/02/2018.
+/****************************************
+ * Created by snadaras                  *
+ * snadaras@student.42.fr on 20/02/2018 *
  */
+
 public class Logger {
     private static Logger logger = null;
     private static BufferedWriter bufferedWriter = null;

@@ -1,4 +1,4 @@
-package fr_42_avaj_launcher.tower;
+package fr_42_avaj_launcher.simulator;
 
 import fr_42_avaj_launcher.exception.UnknownWeatherException;
 import fr_42_avaj_launcher.craft_engine.Flyable;
@@ -6,9 +6,11 @@ import fr_42_avaj_launcher.craft_engine.Flyable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by snadaras on 20/02/2018.
+/****************************************
+ * Created by snadaras                  *
+ * snadaras@student.42.fr on 20/02/2018 *
  */
+
 public abstract class Tower {
     private List<Flyable> observers = new ArrayList<Flyable>();
 
