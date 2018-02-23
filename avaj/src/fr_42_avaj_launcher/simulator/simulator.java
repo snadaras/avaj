@@ -18,12 +18,8 @@ import java.util.Random;
 public class Simulator {
     private static WeatherTower weatherTower;
     private static List<Flyable> flyables = new ArrayList<Flyable>();
-    private static Random randomGenerator = new Random();
     public static void main(String[] args) {
 
-        for (int i = 0; i < 50; i++) {
-            System.out.println("count " + randomGenerator.nextInt(4));
-        }
         if (args.length != 1) {
             System.out.println("Usage: java fr_42_avaj_launcher.simulator.Simulator scenario.txt");
             System.exit(0);

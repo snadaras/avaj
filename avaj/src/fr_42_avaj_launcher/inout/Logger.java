@@ -3,6 +3,7 @@ package fr_42_avaj_launcher.inout;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+
 import java.io.IOException;
 
 /****************************************
@@ -15,15 +16,15 @@ public class Logger {
     private static BufferedWriter bufferedWriter = null;
 
     private Logger() {
-//        logger = this;
-//        try {
-//            bufferedWriter = new BufferedWriter(new FileWriter(new File("simulation.txt")));
-//            System.out.println("created");
-//            System.out.println(bufferedWriter.toString());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(bufferedWriter);
+       logger = this;
+        try {
+           bufferedWriter = new BufferedWriter(new FileWriter(new File("simulation.txt")));
+            System.out.println("created");
+            System.out.println(bufferedWriter.toString());
+        } catch (IOException e) {
+           e.printStackTrace();
+       }
+       System.out.println(bufferedWriter);
     }
 
     public static Logger getLogger() {

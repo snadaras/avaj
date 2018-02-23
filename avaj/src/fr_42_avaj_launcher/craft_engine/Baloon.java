@@ -28,7 +28,7 @@ public class Baloon extends Aircraft implements Flyable {
                     Math.min(super.coordinates.getHeight() + 4, 100)
             );
             Logger.getLogger().log(
-                    "Baloon#" + super.name + "(" + super.id + "): Let's enjoy the good weather and take some pics."
+                    "Baloon#" + super.name + "(" + super.id + "): Good weather for climb the summet of mount and take some pics"
             );
 
         } else if (weather.equals("RAIN")) {
@@ -38,7 +38,7 @@ public class Baloon extends Aircraft implements Flyable {
                     Math.max(super.coordinates.getHeight() - 5, 0)
             );
             Logger.getLogger().log(
-                    "Baloon#" + super.name + "(" + super.id + "): Damn you rain! You messed up my baloon."
+                    "Baloon#" + super.name + "(" + super.id + "): Damn! It's the deluge ! Jack, can you get out the buckets?"
             );
 
         } else if (weather.equals("FOG")) {
@@ -48,17 +48,17 @@ public class Baloon extends Aircraft implements Flyable {
                     Math.max(super.coordinates.getHeight() - 3, 0)
             );
             Logger.getLogger().log(
-                    "Baloon#" + super.name + "(" + super.id + "): Oh, no! Why is it so foggy?"
+                    "Baloon#" + super.name + "(" + super.id + "):  Wtf? Can not see at 5 meters, gonna go quickly on safe area"
             );
 
         } else if (weather.equals("SNOW")) {
             newCoordinates = new Coordinates(
                     super.coordinates.getLongitude(),
                     super.coordinates.getLatitude(),
-                    super.coordinates.getHeight() - 15
+                    Math.max(super.coordinates.getHeight() - 15, 0)
             );
             Logger.getLogger().log(
-                    "Baloon#" + super.name + "(" + super.id + "): It's snowing. We're gonna crash."
+                    "Baloon#" + super.name + "(" + super.id + "): Strange meteo! It's snowing now. if I had known I would have taken my hat and my coat"
             );
 
         } else {

@@ -28,7 +28,7 @@ public class JetPlane extends Aircraft implements Flyable {
                     super.coordinates.getHeight() + 2
             );
             Logger.getLogger().log(
-                    "JetPlane#" + super.name + "(" + super.id + "): Bright sun."
+                    "JetPlane#" + super.name + "(" + super.id + "): Where are my Sunglasses and UV protection cream?"
             );
 
         } else if (weather.equals("RAIN")) {
@@ -38,7 +38,7 @@ public class JetPlane extends Aircraft implements Flyable {
                     super.coordinates.getHeight()
             );
             Logger.getLogger().log(
-                    "JetPlane#" + super.name + "(" + super.id + "): It's raining. Better watch out for lightings."
+                    "JetPlane#" + super.name + "(" + super.id + "): It's raining today. Hope we won't met any duck front our way."
             );
 
         } else if (weather.equals("FOG")) {
@@ -48,7 +48,7 @@ public class JetPlane extends Aircraft implements Flyable {
                     super.coordinates.getHeight()
             );
             Logger.getLogger().log(
-                    "JetPlane#" + super.name + "(" + super.id + "): The fog is killing me. Request permission to land."
+                    "JetPlane#" + super.name + "(" + super.id + "): this fog is real mashed peas, others cuckoos in the area?"
             );
 
         } else if (weather.equals("SNOW")) {
@@ -58,7 +58,7 @@ public class JetPlane extends Aircraft implements Flyable {
                     super.coordinates.getHeight() + 7
             );
             Logger.getLogger().log(
-                    "JetPlane#" + super.name + "(" + super.id + "): OMG! Winter is coming!"
+                    "JetPlane#" + super.name + "(" + super.id + "): Damn! As told in GOT, Winter is coming!"
             );
 
         } else {

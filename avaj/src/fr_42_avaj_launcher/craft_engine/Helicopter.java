@@ -28,7 +28,7 @@ public class Helicopter extends Aircraft implements Flyable {
                     Math.min(super.coordinates.getHeight() + 2, 100)
             );
             Logger.getLogger().log(
-                    "Helicopter#" + super.name + "(" + super.id + "): This is hot."
+                    "Helicopter#" + super.name + "(" + super.id + "): This is so hot, we need a real air fan inside."
             );
 
         } else if (weather.equals("RAIN")) {
@@ -38,7 +38,7 @@ public class Helicopter extends Aircraft implements Flyable {
                     super.coordinates.getHeight()
             );
             Logger.getLogger().log(
-                    "Helicopter#" + super.name + "(" + super.id + "): This could be us. But I don't go out when it's raining."
+                    "Helicopter#" + super.name + "(" + super.id + "): It's cool !! don't have to water my garden when I will back."
             );
 
         } else if (weather.equals("FOG")) {
@@ -48,7 +48,7 @@ public class Helicopter extends Aircraft implements Flyable {
                     super.coordinates.getHeight()
             );
             Logger.getLogger().log(
-                    "Helicopter#" + super.name + "(" + super.id + "): Oh, no! Why is it so foggy?"
+                    "Helicopter#" + super.name + "(" + super.id + "): Jesus! Are we in london? Hope, won't have to check time from Big ben"
             );
 
         } else if (weather.equals("SNOW")) {
@@ -58,7 +58,7 @@ public class Helicopter extends Aircraft implements Flyable {
                     Math.max(super.coordinates.getHeight() - 12, 0)
             );
             Logger.getLogger().log(
-                    "Helicopter#" + super.name + "(" + super.id + "): My rotor is going to freeze."
+                    "Helicopter#" + super.name + "(" + super.id + "): My rotor is going to freeze, Heavy Steevy ! it's time to turn back."
             );
 
         } else {
