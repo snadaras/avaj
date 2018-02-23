@@ -19,49 +19,48 @@ public class JetPlane extends Aircraft implements Flyable {
         String weather = this.weatherTower.getWeather(super.coordinates);
         Coordinates newCoordinates = null;
 
-        switch (weather) {
-            case "SUN":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude(),
-                        super.coordinates.getLatitude() + 10,
-                        super.coordinates.getHeight() + 2
-                );
-                Logger.getLogger().log(
-                        "JetPlane#" + super.name + "(" + super.id + "): Bright sun."
-                );
-                break;
-            case "RAIN":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude(),
-                        super.coordinates.getLatitude() + 5,
-                        super.coordinates.getHeight()
-                );
-                Logger.getLogger().log(
-                        "JetPlane#" + super.name + "(" + super.id + "): It's raining. Better watch out for lightings."
-                );
-                break;
-            case "FOG":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude(),
-                        super.coordinates.getLatitude() + 1,
-                        super.coordinates.getHeight()
-                );
-                Logger.getLogger().log(
-                        "JetPlane#" + super.name + "(" + super.id + "): The fog is killing me. Request permission to land."
-                );
-                break;
-            case "SNOW":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude(),
-                        super.coordinates.getLatitude() ,
-                        super.coordinates.getHeight() + 7
-                );
-                Logger.getLogger().log(
-                        "JetPlane#" + super.name + "(" + super.id + "): OMG! Winter is coming!"
-                );
-                break;
-            default:
-                throw new UnknownWeatherException("Unknown weather: " + weather);
+        if (weather.equals("SUN")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude(),
+                    super.coordinates.getLatitude() + 10,
+                    super.coordinates.getHeight() + 2
+            );
+            Logger.getLogger().log(
+                    "JetPlane#" + super.name + "(" + super.id + "): Bright sun."
+            );
+
+        } else if (weather.equals("RAIN")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude(),
+                    super.coordinates.getLatitude() + 5,
+                    super.coordinates.getHeight()
+            );
+            Logger.getLogger().log(
+                    "JetPlane#" + super.name + "(" + super.id + "): It's raining. Better watch out for lightings."
+            );
+
+        } else if (weather.equals("FOG")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude(),
+                    super.coordinates.getLatitude() + 1,
+                    super.coordinates.getHeight()
+            );
+            Logger.getLogger().log(
+                    "JetPlane#" + super.name + "(" + super.id + "): The fog is killing me. Request permission to land."
+            );
+
+        } else if (weather.equals("SNOW")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude(),
+                    super.coordinates.getLatitude(),
+                    super.coordinates.getHeight() + 7
+            );
+            Logger.getLogger().log(
+                    "JetPlane#" + super.name + "(" + super.id + "): OMG! Winter is coming!"
+            );
+
+        } else {
+            throw new UnknownWeatherException("Unknown weather: " + weather);
         }
 
         super.coordinates = newCoordinates;

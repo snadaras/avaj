@@ -19,49 +19,48 @@ public class Helicopter extends Aircraft implements Flyable {
         String weather = this.weatherTower.getWeather(super.coordinates);
         Coordinates newCoordinates = null;
 
-        switch (weather) {
-            case "SUN":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude() + 10,
-                        super.coordinates.getLatitude(),
-                        Math.min(super.coordinates.getHeight() + 2, 100)
-                );
-                Logger.getLogger().log(
-                        "Helicopter#" + super.name + "(" + super.id + "): This is hot."
-                );
-                break;
-            case "RAIN":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude() + 5,
-                        super.coordinates.getLatitude(),
-                        super.coordinates.getHeight()
-                );
-                Logger.getLogger().log(
-                        "Helicopter#" + super.name + "(" + super.id + "): This could be us. But I don't go out when it's raining."
-                );
-                break;
-            case "FOG":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude() + 1,
-                        super.coordinates.getLatitude(),
-                        super.coordinates.getHeight()
-                );
-                Logger.getLogger().log(
-                        "Helicopter#" + super.name + "(" + super.id + "): Oh, no! Why is it so foggy?"
-                );
-                break;
-            case "SNOW":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude(),
-                        super.coordinates.getLatitude() ,
-                        Math.max(super.coordinates.getHeight() - 12, 0)
-                );
-                Logger.getLogger().log(
-                        "Helicopter#" + super.name + "(" + super.id + "): My rotor is going to freeze."
-                );
-                break;
-            default:
-                throw new UnknownWeatherException("Unknown weather: " + weather);
+        if (weather.equals("SUN")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude() + 10,
+                    super.coordinates.getLatitude(),
+                    Math.min(super.coordinates.getHeight() + 2, 100)
+            );
+            Logger.getLogger().log(
+                    "Helicopter#" + super.name + "(" + super.id + "): This is hot."
+            );
+
+        } else if (weather.equals("RAIN")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude() + 5,
+                    super.coordinates.getLatitude(),
+                    super.coordinates.getHeight()
+            );
+            Logger.getLogger().log(
+                    "Helicopter#" + super.name + "(" + super.id + "): This could be us. But I don't go out when it's raining."
+            );
+
+        } else if (weather.equals("FOG")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude() + 1,
+                    super.coordinates.getLatitude(),
+                    super.coordinates.getHeight()
+            );
+            Logger.getLogger().log(
+                    "Helicopter#" + super.name + "(" + super.id + "): Oh, no! Why is it so foggy?"
+            );
+
+        } else if (weather.equals("SNOW")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude(),
+                    super.coordinates.getLatitude(),
+                    Math.max(super.coordinates.getHeight() - 12, 0)
+            );
+            Logger.getLogger().log(
+                    "Helicopter#" + super.name + "(" + super.id + "): My rotor is going to freeze."
+            );
+
+        } else {
+            throw new UnknownWeatherException("Unknown weather: " + weather);
         }
 
         super.coordinates = newCoordinates;

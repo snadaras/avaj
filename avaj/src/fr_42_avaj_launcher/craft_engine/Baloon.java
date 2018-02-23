@@ -19,49 +19,48 @@ public class Baloon extends Aircraft implements Flyable {
         String weather = this.weatherTower.getWeather(super.coordinates);
         Coordinates newCoordinates = null;
 
-        switch (weather) {
-            case "SUN":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude() + 2,
-                        super.coordinates.getLatitude() ,
-                        Math.min(super.coordinates.getHeight() + 4, 100)
-                );
-                Logger.getLogger().log(
-                        "Baloon#" + super.name + "(" + super.id + "): Let's enjoy the good weather and take some pics."
-                );
-                break;
-            case "RAIN":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude(),
-                        super.coordinates.getLatitude(),
-                        Math.max(super.coordinates.getHeight() - 5, 0)
-                );
-                Logger.getLogger().log(
-                        "Baloon#" + super.name + "(" + super.id + "): Damn you rain! You messed up my baloon."
-                );
-                break;
-            case "FOG":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude(),
-                        super.coordinates.getLatitude(),
-                        Math.max(super.coordinates.getHeight() - 3, 0)
-                );
-                Logger.getLogger().log(
-                        "Baloon#" + super.name + "(" + super.id + "): Oh, no! Why is it so foggy?"
-                );
-                break;
-            case "SNOW":
-                newCoordinates = new Coordinates(
-                        super.coordinates.getLongitude(),
-                        super.coordinates.getLatitude() ,
-                        super.coordinates.getHeight() - 15
-                );
-                Logger.getLogger().log(
-                        "Baloon#" + super.name + "(" + super.id + "): It's snowing. We're gonna crash."
-                );
-                break;
-            default:
-                throw new UnknownWeatherException("Unknown weather: " + weather);
+        if (weather.equals("SUN")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude() + 2,
+                    super.coordinates.getLatitude(),
+                    Math.min(super.coordinates.getHeight() + 4, 100)
+            );
+            Logger.getLogger().log(
+                    "Baloon#" + super.name + "(" + super.id + "): Let's enjoy the good weather and take some pics."
+            );
+
+        } else if (weather.equals("RAIN")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude(),
+                    super.coordinates.getLatitude(),
+                    Math.max(super.coordinates.getHeight() - 5, 0)
+            );
+            Logger.getLogger().log(
+                    "Baloon#" + super.name + "(" + super.id + "): Damn you rain! You messed up my baloon."
+            );
+
+        } else if (weather.equals("FOG")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude(),
+                    super.coordinates.getLatitude(),
+                    Math.max(super.coordinates.getHeight() - 3, 0)
+            );
+            Logger.getLogger().log(
+                    "Baloon#" + super.name + "(" + super.id + "): Oh, no! Why is it so foggy?"
+            );
+
+        } else if (weather.equals("SNOW")) {
+            newCoordinates = new Coordinates(
+                    super.coordinates.getLongitude(),
+                    super.coordinates.getLatitude(),
+                    super.coordinates.getHeight() - 15
+            );
+            Logger.getLogger().log(
+                    "Baloon#" + super.name + "(" + super.id + "): It's snowing. We're gonna crash."
+            );
+
+        } else {
+            throw new UnknownWeatherException("Unknown weather: " + weather);
         }
 
         super.coordinates = newCoordinates;

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class Simulator {
     private static WeatherTower weatherTower;
-    private static List<Flyable> flyables = new ArrayList<>();
+    private static List<Flyable> flyables = new ArrayList<Flyable>();
 
     public static void main(String[] args) {
         if (args.length != 1) {
@@ -91,3 +91,4 @@ public class Simulator {
         }
     }
 }
+

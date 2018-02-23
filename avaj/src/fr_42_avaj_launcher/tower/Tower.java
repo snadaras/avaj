@@ -10,7 +10,7 @@ import java.util.List;
  * Created by snadaras on 20/02/2018.
  */
 public abstract class Tower {
-    private List<Flyable> observers = new ArrayList<>();
+    private List<Flyable> observers = new ArrayList<Flyable>();
 
     public void register(Flyable flyable) {
         this.observers.add(flyable);
@@ -21,7 +21,7 @@ public abstract class Tower {
     }
 
     protected void conditionsChanged() throws UnknownWeatherException {
-        List<Flyable> copyOfObservers = new ArrayList<>();
+        List<Flyable> copyOfObservers = new ArrayList<Flyable>();
         for (Flyable flyable : observers) {
             copyOfObservers.add(flyable);
         }
