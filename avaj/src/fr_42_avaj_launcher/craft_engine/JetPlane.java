@@ -18,60 +18,59 @@ public class JetPlane extends Aircraft implements Flyable {
     }
 
     public void updateConditions() throws UnknownWeatherException {
-        String weather = this.weatherTower.getWeather(super.coordinates);
+        String weather = this.weatherTower.getWeather(coordinates);
         Coordinates newCoordinates = null;
 
         if (weather.equals("SUN")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude(),
-                    super.coordinates.getLatitude() + 10,
-                    super.coordinates.getHeight() + 2
+                    coordinates.getLongitude() + 10,
+                    coordinates.getLatitude(),
+                    Math.min(coordinates.getHeight() + 2, 100)
             );
             Logger.getLogger().log(
-                    "JetPlane#" + super.name + "(" + super.id + "): Where are my Sunglasses and UV protection cream?"
+                    "JetPlane#" + name + "(" + id + "): Marleen? Where are you put my Sunglasses and UV protect cream?"
             );
 
         } else if (weather.equals("RAIN")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude(),
-                    super.coordinates.getLatitude() + 5,
-                    super.coordinates.getHeight()
+                    coordinates.getLongitude(),
+                    coordinates.getLatitude() + 5,
+                    coordinates.getHeight()
             );
             Logger.getLogger().log(
-                    "JetPlane#" + super.name + "(" + super.id + "): It's raining today. Hope we won't met any duck front our way."
+                    "JetPlane#" + name + "(" + id + "): It's raining today. Hope we won't met any duck front this way!"
             );
 
         } else if (weather.equals("FOG")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude(),
-                    super.coordinates.getLatitude() + 1,
-                    super.coordinates.getHeight()
+                    coordinates.getLongitude(),
+                    coordinates.getLatitude() + 1,
+                    coordinates.getHeight()
             );
             Logger.getLogger().log(
-                    "JetPlane#" + super.name + "(" + super.id + "): this fog is real mashed peas, others cuckoos in the area?"
+                    "JetPlane#" + name + "(" + id + "): This fog is real mashed peas! Can't see everythng, so are there others cuckoos in the area?"
             );
 
         } else if (weather.equals("SNOW")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude(),
-                    super.coordinates.getLatitude(),
-                    super.coordinates.getHeight() + 7
+                    coordinates.getLongitude(),
+                    coordinates.getLatitude(),
+                    Math.max(coordinates.getHeight() - 7, 0)
             );
             Logger.getLogger().log(
-                    "JetPlane#" + super.name + "(" + super.id + "): Damn! As told in GOT, Winter is coming!"
+                    "JetPlane#" + name + "(" + id + "): OMG! Guys, I won't replay you the GOT! Winter is coming!"
             );
-
         } else {
             throw new UnknownWeatherException("Unknown weather: " + weather);
         }
 
         super.coordinates = newCoordinates;
 
-        if (super.coordinates.getHeight() == 0) {
-            Logger.getLogger().log("JetPlane#" + super.name + "(" + super.id + ") landing.");
+        if (super.coordinates.getHeight() <= 0) {
+            Logger.getLogger().log("JetPlane#" + name + "(" + id + ") landing.");
             this.weatherTower.unregister(this);
             Logger.getLogger().log(
-                    "Tower says: JetPlane#" + super.name + "(" + super.id + ") unregistered from weather tower."
+                    "Tower says: JetPlane#" + name + "(" + id + ") unregistered from Weather Tower."
             );
         }
     }
@@ -80,7 +79,7 @@ public class JetPlane extends Aircraft implements Flyable {
         weatherTower.register(this);
         this.weatherTower = weatherTower;
         Logger.getLogger().log(
-                "Tower says: JetPlane#" + super.name + "(" + super.id + ") registered to weather tower."
+                "Tower says: JetPlane#" + name + "(" + id + ") registered to Weather Tower."
         );
     }
 }

@@ -1,8 +1,10 @@
 package fr_42_avaj_launcher.exception;
 
-/**
- * Created by snadaras on 20/02/2018.
+/****************************************
+ * Created by snadaras                  *
+ * snadaras@student.42.fr on 20/02/2018 *
  */
+
 public class UnknownAircraftTypeException extends AvajLauncherException {
     public UnknownAircraftTypeException() {
         super();

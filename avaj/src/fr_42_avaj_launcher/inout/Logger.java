@@ -19,12 +19,12 @@ public class Logger {
        logger = this;
         try {
            bufferedWriter = new BufferedWriter(new FileWriter(new File("simulation.txt")));
-            System.out.println("created");
+            System.out.println("--- output file created");
             System.out.println(bufferedWriter.toString());
         } catch (IOException e) {
            e.printStackTrace();
        }
-       System.out.println(bufferedWriter);
+      System.out.println("--- launch the simulation pgm avaj");
     }
 
     public static Logger getLogger() {

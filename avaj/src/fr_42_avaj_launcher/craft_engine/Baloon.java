@@ -18,60 +18,60 @@ public class Baloon extends Aircraft implements Flyable {
     }
 
     public void updateConditions() throws UnknownWeatherException {
-        String weather = this.weatherTower.getWeather(super.coordinates);
+        String weather = this.weatherTower.getWeather(coordinates);
         Coordinates newCoordinates = null;
 
         if (weather.equals("SUN")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude() + 2,
-                    super.coordinates.getLatitude(),
-                    Math.min(super.coordinates.getHeight() + 4, 100)
+                    coordinates.getLongitude() + 2,
+                    coordinates.getLatitude(),
+                    Math.min(coordinates.getHeight() + 4, 100)
             );
             Logger.getLogger().log(
-                    "Baloon#" + super.name + "(" + super.id + "): Good weather for climb the summet of mount and take some pics"
+                    "Baloon#" + name + "(" + id + "): Good sunny weather! let's climb the summet of mount & take some pictures"
             );
 
         } else if (weather.equals("RAIN")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude(),
-                    super.coordinates.getLatitude(),
-                    Math.max(super.coordinates.getHeight() - 5, 0)
+                    coordinates.getLongitude(),
+                    coordinates.getLatitude(),
+                    Math.max(coordinates.getHeight() - 5, 0)
             );
             Logger.getLogger().log(
-                    "Baloon#" + super.name + "(" + super.id + "): Damn! It's the deluge ! Jack, can you get out the buckets?"
+                    "Baloon#" + name + "(" + id + "): Damn! It's the deluge! Jack, can you get out the buckets?"
             );
 
         } else if (weather.equals("FOG")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude(),
-                    super.coordinates.getLatitude(),
-                    Math.max(super.coordinates.getHeight() - 3, 0)
+                    coordinates.getLongitude(),
+                    coordinates.getLatitude(),
+                    Math.max(coordinates.getHeight() - 3, 0)
             );
             Logger.getLogger().log(
-                    "Baloon#" + super.name + "(" + super.id + "):  Wtf? Can not see at 5 meters, gonna go quickly on safe area"
+                    "Baloon#" + name + "(" + id + "):  Wtf? Can not see at 5 meters, gonna go quickly on safe area"
             );
 
         } else if (weather.equals("SNOW")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude(),
-                    super.coordinates.getLatitude(),
-                    Math.max(super.coordinates.getHeight() - 15, 0)
+                    coordinates.getLongitude(),
+                    coordinates.getLatitude(),
+                    Math.max(coordinates.getHeight() - 15, 0)
             );
             Logger.getLogger().log(
-                    "Baloon#" + super.name + "(" + super.id + "): Strange meteo! It's snowing now. if I had known I would have taken my hat and my coat"
+                    "Baloon#" + name + "(" + id + "): Strange climate! It's snowing now! If I had known I would have taken my hat and my coat"
             );
 
         } else {
             throw new UnknownWeatherException("Unknown weather: " + weather);
         }
 
-        super.coordinates = newCoordinates;
+        coordinates = newCoordinates;
 
-        if (super.coordinates.getHeight() == 0) {
-            Logger.getLogger().log("Baloon#" + super.name + "(" + super.id + ") landing.");
+        if (coordinates.getHeight() <= 0) {
+            Logger.getLogger().log("Baloon#" + name + "(" + id + ") landing.");
             this.weatherTower.unregister(this);
             Logger.getLogger().log(
-                    "Tower says: Baloon#" + super.name + "(" + super.id + ") unregistered from weather tower."
+                    "Tower says: Baloon#" + name + "(" + id + ") unregistered from Weather Tower."
             );
         }
     }
@@ -80,7 +80,7 @@ public class Baloon extends Aircraft implements Flyable {
         weatherTower.register(this);
         this.weatherTower = weatherTower;
         Logger.getLogger().log(
-                "Tower says: Baloon#" + super.name + "(" + super.id + ") registered to weather tower."
+                "Tower says: Baloon#" + name + "(" + id + ") registered to Weather Tower."
         );
     }
 }

@@ -18,60 +18,60 @@ public class Helicopter extends Aircraft implements Flyable {
     }
 
     public void updateConditions() throws UnknownWeatherException {
-        String weather = this.weatherTower.getWeather(super.coordinates);
+        String weather = this.weatherTower.getWeather(coordinates);
         Coordinates newCoordinates = null;
 
         if (weather.equals("SUN")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude() + 10,
-                    super.coordinates.getLatitude(),
-                    Math.min(super.coordinates.getHeight() + 2, 100)
+                    coordinates.getLongitude() + 10,
+                    coordinates.getLatitude(),
+                    Math.min(coordinates.getHeight() + 2, 100)
             );
             Logger.getLogger().log(
-                    "Helicopter#" + super.name + "(" + super.id + "): This is so hot, we need a real air fan inside."
+                    "Helicopter#" + name + "(" + id + "): This is strongly hot! we need a real air fan inside."
             );
 
         } else if (weather.equals("RAIN")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude() + 5,
-                    super.coordinates.getLatitude(),
-                    super.coordinates.getHeight()
+                    coordinates.getLongitude() + 5,
+                    coordinates.getLatitude(),
+                    coordinates.getHeight()
             );
             Logger.getLogger().log(
-                    "Helicopter#" + super.name + "(" + super.id + "): It's cool !! don't have to water my garden when I will back."
+                    "Helicopter#" + name + "(" + id + "): It's so cool!! won't have to water my garden when I will back at home."
             );
 
         } else if (weather.equals("FOG")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude() + 1,
-                    super.coordinates.getLatitude(),
-                    super.coordinates.getHeight()
+                    coordinates.getLongitude() + 1,
+                    coordinates.getLatitude(),
+                    coordinates.getHeight()
             );
             Logger.getLogger().log(
-                    "Helicopter#" + super.name + "(" + super.id + "): Jesus! Are we in london? Hope, won't have to check time from Big ben"
+                    "Helicopter#" + name + "(" + id + "): Jesus! Are we yet in london? Hope, we won't have to check time from the Big ben"
             );
 
         } else if (weather.equals("SNOW")) {
             newCoordinates = new Coordinates(
-                    super.coordinates.getLongitude(),
-                    super.coordinates.getLatitude(),
-                    Math.max(super.coordinates.getHeight() - 12, 0)
+                    coordinates.getLongitude(),
+                    coordinates.getLatitude(),
+                    Math.max(coordinates.getHeight() - 12, 0)
             );
             Logger.getLogger().log(
-                    "Helicopter#" + super.name + "(" + super.id + "): My rotor is going to freeze, Heavy Steevy ! it's time to turn back."
+                    "Helicopter#" + name + "(" + id + "): My rotor is going to freeze! Hey, Steevy! it's time to turn back."
             );
 
         } else {
             throw new UnknownWeatherException("Unknown weather: " + weather);
         }
 
-        super.coordinates = newCoordinates;
+        coordinates = newCoordinates;
 
-        if (super.coordinates.getHeight() == 0) {
-            Logger.getLogger().log("Helicopter#" + super.name + "(" + super.id + ") landing.");
+        if (coordinates.getHeight() <= 0) {
+            Logger.getLogger().log("Helicopter#" + name + "(" + id + ") landing.");
             this.weatherTower.unregister(this);
             Logger.getLogger().log(
-                    "Tower says: Helicopter#" + super.name + "(" + super.id + ") unregistered from weather tower."
+                    "Tower says: Helicopter#" + name + "(" + id + ") unregistered from Weather Tower."
             );
         }
     }
@@ -80,7 +80,7 @@ public class Helicopter extends Aircraft implements Flyable {
         weatherTower.register(this);
         this.weatherTower = weatherTower;
         Logger.getLogger().log(
-                "Tower says: Helicopter#" + super.name + "(" + super.id + ") registered to weather tower."
+                "Tower says: Helicopter#" + name + "(" + id + ") registered to Weather Tower."
         );
     }
 }

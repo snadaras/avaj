@@ -33,4 +33,3 @@ public abstract class AircraftFactory {
                 return flyable;
     }
 }
-
